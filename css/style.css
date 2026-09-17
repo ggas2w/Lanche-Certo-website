@@ -502,6 +502,16 @@ section { position: relative; }
 .menu-section { background: var(--black); padding: 90px 0 90px; }
 .menu-section .section-title { color: var(--cream); }
 .menu-section .section-eyebrow { color: var(--yellow); }
+.menu-section .section-head-note { color: rgba(245,240,229,.55); max-width: none; margin-top: 6px; }
+/* Link "Voltar" — página dedicada de combos (combos.html) */
+.menu-back-link {
+  display: inline-block;
+  color: rgba(245,240,229,.55);
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.menu-back-link:hover { color: var(--yellow); }
 
 .menu-tabs {
   max-width: 1240px;

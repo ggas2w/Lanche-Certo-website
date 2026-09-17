@@ -1,14 +1,33 @@
 // ===================================================
 // Header com dois estados — transparente/mesclado ao herói no topo,
-// sólido (preto + linha amarela) assim que o herói sai da tela. O
-// vídeo de fundo do herói toca sozinho via autoplay/muted/loop no
-// próprio <video> (sem pausa condicional por JS aqui: um vídeo de
-// fundo mudo e sutil como esse não é o tipo de movimento que
-// prefers-reduced-motion pretende bloquear, e pausá-lo condicionalmente
-// estava fazendo o herói parecer estático pra quem tem essa preferência
-// ligada no sistema).
+// sólido (preto + linha amarela) assim que o herói sai da tela.
+//
+// + Reforço de reprodução do vídeo de fundo do herói: o <video> já tem
+// autoplay/muted/loop/playsinline (isso sozinho já basta na grande
+// maioria dos navegadores — confirmado que funciona), mas alguns
+// cenários específicos podem deixá-lo pausado mesmo assim: iOS com
+// Modo de Baixo Consumo bloqueia autoplay nativo mesmo em vídeo mudo, e
+// navegar de volta a uma página guardada em cache (bfcache/histórico)
+// às vezes restaura o <video> já pausado. Por isso chamamos .play()
+// explicitamente por código também, com nova tentativa nesses dois
+// casos — sem isso o herói pode parecer "uma foto estática" mesmo com
+// o vídeo certo no lugar certo.
 // ===================================================
 document.addEventListener('DOMContentLoaded', () => {
+
+  const bgVideo = document.querySelector('.hero-bg-video');
+  if (bgVideo) {
+    const tryPlay = () => {
+      if (!bgVideo.paused) return;
+      const playPromise = bgVideo.play();
+      if (playPromise && playPromise.catch) playPromise.catch(() => {});
+    };
+    tryPlay();
+    bgVideo.addEventListener('loadeddata', tryPlay);
+    bgVideo.addEventListener('canplay', tryPlay);
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) tryPlay(); });
+    window.addEventListener('pageshow', tryPlay); // cobre restauração via bfcache
+  }
 
   const header = document.querySelector('.header');
   const hero = document.getElementById('inicio');

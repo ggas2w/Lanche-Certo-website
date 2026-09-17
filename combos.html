@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Combos — Lanche Certo</title>
+<meta name="description" content="Combos da Lanche Certo — lanche, porção e bebida no ponto certo. Veja os combos disponíveis e monte seu pedido.">
+<link rel="icon" type="image/png" href="public/favicon.png">
+<link rel="apple-touch-icon" href="public/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Sprite de ilustrações — só o símbolo usado nesta página (combo),
+     mesmo estilo/arquivo do index.html. -->
+<svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+  <defs>
+    <symbol id="illus-combo" viewBox="0 0 100 100">
+      <path d="M62 26 L86 26 L82 62 L66 62 Z" fill="#F5F0E5" stroke="#111111" stroke-width="2"/>
+      <rect x="60" y="20" width="28" height="7" rx="2" fill="#111111"/>
+      <path d="M8 50 L34 50 L29 82 L13 82 Z" fill="#F05A24"/>
+      <rect x="14" y="30" width="5" height="26" rx="2" fill="#FFD92B"/>
+      <rect x="21" y="26" width="5" height="30" rx="2" fill="#E8BF00"/>
+      <rect x="27" y="32" width="5" height="24" rx="2" fill="#FFD92B"/>
+      <ellipse cx="46" cy="78" rx="22" ry="6" fill="#B88B18"/>
+      <rect x="30" y="68" width="32" height="9" rx="4" fill="#3A3028"/>
+      <path d="M28 63 Q46 70 64 63 L64 67 Q46 74 28 67 Z" fill="#8AA33C"/>
+      <path d="M26 44 C26 30 35 22 46 22 C57 22 66 30 66 44 Z" fill="#E8BF00"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ===== HEADER =====
+     Mesmo header do index.html (logo/nav/carrinho). Sem herói nesta
+     página, então já entra no estado "sólido" (classe is-scrolled
+     fixa) em vez de depender do js/hero.js, que não é carregado aqui.
+     Links de navegação apontam de volta pro index.html + âncora. -->
+<header class="header is-scrolled">
+  <div class="header-inner">
+    <a href="index.html#inicio" class="header-brand">
+      <img class="header-logo" src="public/logo-lanche-certo.png" alt="Lanche Certo">
+      <span class="header-brand-text">LANCHE <span>CERTO</span></span>
+    </a>
+
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html#inicio">Início</a>
+      <a href="index.html#cardapio">Cardápio</a>
+      <a href="index.html#destaques">Mais Pedidos</a>
+      <a href="index.html#sobre">Sobre</a>
+      <a href="index.html#contato">Contato</a>
+      <a href="index.html#contato" class="btn btn-primary btn-sm nav-mobile-cta">Pedir Agora</a>
+    </nav>
+
+    <div class="header-actions">
+      <a href="index.html#contato" class="btn btn-primary btn-sm btn-header-cta">Pedir Agora</a>
+
+      <div class="cart-widget">
+        <button class="cart-button" id="cartButton" aria-label="Ver carrinho" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.6L20.5 8H6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="20" r="1.4" fill="currentColor"/><circle cx="17" cy="20" r="1.4" fill="currentColor"/></svg>
+          <span class="cart-count" id="cartCount" hidden>0</span>
+        </button>
+
+        <div class="cart-panel" id="cartPanel" hidden>
+          <div class="cart-panel-header">
+            <h3>Seu carrinho</h3>
+            <button class="cart-close" id="cartClose" aria-label="Fechar carrinho">&times;</button>
+          </div>
+
+          <div class="cart-empty-state" id="cartEmpty">
+            <p class="cart-empty-title">Seu carrinho está vazio.</p>
+            <p class="cart-empty-text">Escolha seus lanches e monte seu pedido.</p>
+            <a href="index.html#cardapio" class="btn btn-outline-dark btn-sm" id="cartEmptyCta">Ver Cardápio</a>
+          </div>
+
+          <ul class="cart-items" id="cartItems"></ul>
+
+          <div class="cart-footer" id="cartFooter" hidden>
+            <label class="cart-note-label" for="cartGeneralNote">Observação geral do pedido <span>(opcional)</span></label>
+            <textarea id="cartGeneralNote" class="cart-textarea" rows="2" placeholder="Ex.: troco pra R$ 50, retirar às 20h..."></textarea>
+
+            <div class="cart-footer-total">
+              <span>Total</span>
+              <strong id="cartTotal">R$ 0,00</strong>
+            </div>
+
+            <div class="cart-footer-row">
+              <button type="button" class="cart-clear" id="cartClear">Limpar Carrinho</button>
+              <button type="button" class="btn btn-outline-dark btn-sm" id="cartContinue">Continuar Comprando</button>
+            </div>
+            <button type="button" class="btn btn-primary cart-confirm-btn" id="cartConfirm">Confirmar Pedido</button>
+          </div>
+        </div>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav">
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== COMBOS =====
+     Destino dedicado do botão "Ver Combos" (seção promo do index.html).
+     Mostra SÓ os itens categoria "combos" — mesmos registros (nome,
+     descrição, preço, data-id) do cardápio geral em index.html, sem
+     duplicar dados novos nem inventar produto/preço. -->
+<section class="menu-section combos-page">
+  <div class="section-head reveal">
+    <div>
+      <a href="index.html#cardapio" class="menu-back-link">&larr; Voltar ao cardápio</a>
+      <span class="section-eyebrow eyebrow">Combo Que Resolve</span>
+      <h1 class="section-title">Combos</h1>
+      <p class="section-head-note">Escolha o combo que resolve.</p>
+    </div>
+  </div>
+
+  <div class="menu-grid">
+
+    <article class="menu-card reveal" data-category="combos" data-id="combo-duplo-full" data-name="Combo Duplo" data-price="54.90">
+      <div class="menu-card-thumb"><svg class="illus" viewBox="0 0 100 100" aria-hidden="true"><use href="#illus-combo"></use></svg></div>
+      <div class="menu-card-body">
+        <h4>Combo Duplo</h4>
+        <p>2 lanches à escolha, 2 batatas fritas e 2 refrigerantes.</p>
+        <div class="menu-card-footer">
+          <span class="menu-card-price">R$ 54,90*</span>
+          <button class="menu-add-btn" data-add-id="combo-duplo-full" data-add-name="Combo Duplo" data-add-price="54.90" aria-label="Adicionar Combo Duplo">+</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="menu-card reveal" data-category="combos" data-id="combo-solo" data-name="Combo Solo" data-price="29.90">
+      <div class="menu-card-thumb"><svg class="illus" viewBox="0 0 100 100" aria-hidden="true"><use href="#illus-combo"></use></svg></div>
+      <div class="menu-card-body">
+        <h4>Combo Solo</h4>
+        <p>1 lanche à escolha, batata frita e refrigerante.</p>
+        <div class="menu-card-footer">
+          <span class="menu-card-price">R$ 29,90*</span>
+          <button class="menu-add-btn" data-add-id="combo-solo" data-add-name="Combo Solo" data-add-price="29.90" aria-label="Adicionar Combo Solo">+</button>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <p class="menu-note reveal">* Cardápio ilustrativo — nomes, fotos e valores serão atualizados com os itens e preços reais da casa antes da publicação definitiva.</p>
+</section>
+
+<!-- ===== FOOTER (mesmo do index.html, links voltando pro index) ===== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <a href="index.html#inicio" class="footer-brand">
+      <img src="public/logo-lanche-certo.png" alt="Lanche Certo">
+      <span class="footer-brand-text">LANCHE <span>CERTO</span></span>
+    </a>
+    <nav class="footer-nav">
+      <a href="index.html#inicio">Início</a>
+      <a href="index.html#cardapio">Cardápio</a>
+      <a href="index.html#destaques">Mais Pedidos</a>
+      <a href="index.html#sobre">Sobre</a>
+      <a href="index.html#contato">Contato</a>
+    </nav>
+    <div class="footer-social">
+      <a href="#" aria-label="Instagram" data-placeholder-link="instagram">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.7"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor"/></svg>
+      </a>
+      <a href="#" aria-label="WhatsApp" data-placeholder-link="whatsapp">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M4 5c0-1 1-2 2-2h2l2 5-2 2c1 3 3 5 6 6l2-2 5 2v2c0 1-1 2-2 2C10 20 4 14 4 5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; <span id="footerYear"></span> Lanche Certo — Santa Cruz do Sul, RS</span>
+    <span>Site desenvolvido para apresentação comercial</span>
+  </div>
+</footer>
+
+<!-- Modal de personalização — igual ao do index.html (mesmo fluxo de
+     adicionar ao carrinho, mesma observação livre por item). -->
+<div class="cart-modal-overlay" id="addModalOverlay" hidden>
+  <div class="cart-modal" role="dialog" aria-modal="true" aria-labelledby="addModalTitle">
+    <div class="cart-modal-header">
+      <h3 id="addModalTitle">Adicionar</h3>
+      <button class="cart-modal-close" id="addModalClose" aria-label="Fechar">&times;</button>
+    </div>
+    <div class="cart-modal-body">
+      <div class="cart-modal-qty-row">
+        <span class="cart-modal-qty-label">Quantidade</span>
+        <div class="qty-stepper">
+          <button type="button" id="addQtyDec" aria-label="Diminuir quantidade">&minus;</button>
+          <span id="addQtyValue">1</span>
+          <button type="button" id="addQtyInc" aria-label="Aumentar quantidade">+</button>
+        </div>
+      </div>
+      <label class="cart-note-label" for="addNotes">Observações do lanche <span>(opcional)</span></label>
+      <textarea id="addNotes" class="cart-textarea" rows="3" placeholder="Ex.: sem cebola, com bacon extra, bem passado, cortar ao meio..."></textarea>
+    </div>
+    <div class="cart-modal-footer">
+      <span>Total</span>
+      <strong id="addModalTotal">R$ 0,00</strong>
+    </div>
+    <div class="cart-modal-actions">
+      <button type="button" class="btn btn-outline-dark" id="addModalCancel">Cancelar</button>
+      <button type="button" class="btn btn-primary" id="addModalConfirm">Adicionar ao Carrinho</button>
+    </div>
+  </div>
+</div>
+
+<div class="cart-modal-overlay" id="reviewModalOverlay" hidden>
+  <div class="cart-modal cart-modal--review" role="dialog" aria-modal="true" aria-labelledby="reviewModalTitle">
+    <div class="cart-modal-header">
+      <h3 id="reviewModalTitle">Revisar Pedido</h3>
+      <button class="cart-modal-close" id="reviewModalClose" aria-label="Fechar">&times;</button>
+    </div>
+    <div class="cart-modal-body">
+      <ul class="review-items" id="reviewItems"></ul>
+      <div class="review-general-note" id="reviewGeneralNote" hidden>
+        <strong>Observação geral</strong>
+        <p id="reviewGeneralNoteText"></p>
+      </div>
+      <div class="review-total-row">
+        <span>Total do pedido</span>
+        <strong id="reviewTotal">R$ 0,00</strong>
+      </div>
+      <div class="review-whatsapp-notice" id="reviewWhatsappNotice" hidden></div>
+    </div>
+    <div class="cart-modal-actions">
+      <button type="button" class="btn btn-outline-dark" id="reviewBack">Voltar e Editar</button>
+      <button type="button" class="btn btn-primary" id="reviewConfirm">Confirmar e Enviar</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/cart.js"></script>
+<script src="js/menu.js"></script>
+<script src="js/reveal.js"></script>
+</body>
+</html>
