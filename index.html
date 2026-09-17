@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="public/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600;700;800&family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -188,7 +188,9 @@
     </div>
   </div>
 
+  <div class="menu-body">
   <div class="menu-tabs reveal" id="menuTabs">
+    <span class="menu-tabs-label">Filtrar por</span>
     <button class="menu-tab is-active" data-category="todos">Todos</button>
     <button class="menu-tab" data-category="lanches">Lanches</button>
     <button class="menu-tab" data-category="xis">Xis</button>
@@ -199,7 +201,7 @@
   <div class="menu-grid" id="menuGrid">
 
     <article class="menu-card reveal" data-category="lanches" data-id="x-salada" data-name="X-Salada" data-price="16.90">
-      <div class="menu-card-thumb"><div class="img-placeholder img-placeholder--sm"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="8.5" cy="9.5" r="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M21 16l-5.5-5.5L11 15l-2.5-2.5L3 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Imagem em breve</span></div></div>
+      <div class="menu-card-thumb"><div class="img-placeholder img-placeholder--round"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="8.5" cy="9.5" r="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M21 16l-5.5-5.5L11 15l-2.5-2.5L3 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Imagem em breve</span></div></div>
       <div class="menu-card-body">
         <h4>X-Salada</h4>
         <p>Hambúrguer, queijo, alface, tomate e maionese da casa.</p>
@@ -211,7 +213,7 @@
     </article>
 
     <article class="menu-card reveal" data-category="lanches" data-id="cachorro-quente" data-name="Cachorro-quente Completo" data-price="14.90">
-      <div class="menu-card-thumb"><div class="img-placeholder img-placeholder--sm"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="8.5" cy="9.5" r="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M21 16l-5.5-5.5L11 15l-2.5-2.5L3 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Imagem em breve</span></div></div>
+      <div class="menu-card-thumb"><div class="img-placeholder img-placeholder--round"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="8.5" cy="9.5" r="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M21 16l-5.5-5.5L11 15l-2.5-2.5L3 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Imagem em breve</span></div></div>
       <div class="menu-card-body">
         <h4>Cachorro-quente Completo</h4>
         <p>Salsicha, purê, milho, batata palha, queijo e molhos.</p>
@@ -223,7 +225,7 @@
     </article>
 
     <article class="menu-card reveal" data-category="lanches" data-id="misto-quente" data-name="Misto Quente" data-price="10.90">
-      <div class="menu-card-thumb"><div class="img-placeholder img-placeholder--sm"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="8.5" cy="9.5" r="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M21 16l-5.5-5.5L11 15l-2.5-2.5L3 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Imagem em breve</span></div></div>
+      <div class="menu-card-thumb"><div class="img-placeholder img-placeholder--round"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="8.5" cy="9.5" r="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M21 16l-5.5-5.5L11 15l-2.5-2.5L3 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Imagem em breve</span></div></div>
       <div class="menu-card-body">
         <h4>Misto Quente</h4>
         <p>Pão de forma, presunto e queijo na chapa, do jeito clássico.</p>
@@ -235,7 +237,7 @@
     </article>
 
     <article class="menu-card reveal" data-category="xis" data-id="x-bacon-full" data-name="X-Bacon" data-price="19.90">
-      <div class="menu-card-thumb"><div class="img-placeholder img-placeholder--sm"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="8.5" cy="9.5" r="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M21 16l-5.5-5.5L11 15l-2.5-2.5L3 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Imagem em breve</span></div></div>
+      <div class="menu-card-thumb"><div class="img-placeholder img-placeholder--round"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="8.5" cy="9.5" r="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M21 16l-5.5-5.5L11 15l-2.5-2.5L3 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Imagem em breve</span></div></div>
       <div class="menu-card-body">
         <h4>X-Bacon</h4>
         <p>Hambúrguer, queijo derretido, bacon crocante e molho especial.</p>
@@ -247,7 +249,8 @@
     </article>
 
     <article class="menu-card reveal" data-category="xis" data-id="x-tudo-full" data-name="X-Tudo" data-price="24.90">
-      <div class="menu-card-thumb"><div class="img-placeholder img-placeholder--sm"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="8.5" cy="9.5" r="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M21 16l-5.5-5.5L11 15l-2.5-2.5L3 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Imagem em breve</span></div></div>
+      <span class="menu-card-badge">Mais Pedido</span>
+      <div class="menu-card-thumb"><div class="img-placeholder img-placeholder--round"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="8.5" cy="9.5" r="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M21 16l-5.5-5.5L11 15l-2.5-2.5L3 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Imagem em breve</span></div></div>
       <div class="menu-card-body">
         <h4>X-Tudo</h4>
         <p>Dois hambúrgueres, presunto, queijo, bacon, ovo, alface, tomate e milho.</p>
@@ -259,7 +262,7 @@
     </article>
 
     <article class="menu-card reveal" data-category="xis" data-id="x-frango" data-name="X-Frango" data-price="18.90">
-      <div class="menu-card-thumb"><div class="img-placeholder img-placeholder--sm"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="8.5" cy="9.5" r="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M21 16l-5.5-5.5L11 15l-2.5-2.5L3 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Imagem em breve</span></div></div>
+      <div class="menu-card-thumb"><div class="img-placeholder img-placeholder--round"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="8.5" cy="9.5" r="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M21 16l-5.5-5.5L11 15l-2.5-2.5L3 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Imagem em breve</span></div></div>
       <div class="menu-card-body">
         <h4>X-Frango</h4>
         <p>Filé de frango grelhado, queijo, alface, tomate e maionese temperada.</p>
@@ -271,7 +274,7 @@
     </article>
 
     <article class="menu-card reveal" data-category="porcoes" data-id="batata-frita" data-name="Batata Frita" data-price="15.90">
-      <div class="menu-card-thumb"><div class="img-placeholder img-placeholder--sm"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="8.5" cy="9.5" r="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M21 16l-5.5-5.5L11 15l-2.5-2.5L3 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Imagem em breve</span></div></div>
+      <div class="menu-card-thumb"><div class="img-placeholder img-placeholder--round"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="8.5" cy="9.5" r="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M21 16l-5.5-5.5L11 15l-2.5-2.5L3 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Imagem em breve</span></div></div>
       <div class="menu-card-body">
         <h4>Batata Frita</h4>
         <p>Porção generosa, sequinha e crocante por fora.</p>
@@ -283,7 +286,7 @@
     </article>
 
     <article class="menu-card reveal" data-category="porcoes" data-id="calabresa" data-name="Calabresa Acebolada" data-price="22.90">
-      <div class="menu-card-thumb"><div class="img-placeholder img-placeholder--sm"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="8.5" cy="9.5" r="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M21 16l-5.5-5.5L11 15l-2.5-2.5L3 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Imagem em breve</span></div></div>
+      <div class="menu-card-thumb"><div class="img-placeholder img-placeholder--round"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="8.5" cy="9.5" r="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M21 16l-5.5-5.5L11 15l-2.5-2.5L3 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Imagem em breve</span></div></div>
       <div class="menu-card-body">
         <h4>Calabresa Acebolada</h4>
         <p>Calabresa fatiada na chapa com cebola bem dourada.</p>
@@ -295,7 +298,7 @@
     </article>
 
     <article class="menu-card reveal" data-category="combos" data-id="combo-duplo-full" data-name="Combo Duplo" data-price="54.90">
-      <div class="menu-card-thumb"><div class="img-placeholder img-placeholder--sm"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="8.5" cy="9.5" r="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M21 16l-5.5-5.5L11 15l-2.5-2.5L3 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Imagem em breve</span></div></div>
+      <div class="menu-card-thumb"><div class="img-placeholder img-placeholder--round"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="8.5" cy="9.5" r="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M21 16l-5.5-5.5L11 15l-2.5-2.5L3 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Imagem em breve</span></div></div>
       <div class="menu-card-body">
         <h4>Combo Duplo</h4>
         <p>2 lanches à escolha, 2 batatas fritas e 2 refrigerantes.</p>
@@ -307,7 +310,7 @@
     </article>
 
     <article class="menu-card reveal" data-category="bebidas" data-id="refrigerante" data-name="Refrigerante Lata" data-price="6.50">
-      <div class="menu-card-thumb"><div class="img-placeholder img-placeholder--sm"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="8.5" cy="9.5" r="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M21 16l-5.5-5.5L11 15l-2.5-2.5L3 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Imagem em breve</span></div></div>
+      <div class="menu-card-thumb"><div class="img-placeholder img-placeholder--round"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="8.5" cy="9.5" r="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M21 16l-5.5-5.5L11 15l-2.5-2.5L3 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Imagem em breve</span></div></div>
       <div class="menu-card-body">
         <h4>Refrigerante Lata</h4>
         <p>Gelado, do jeito que combina com o lanche.</p>
@@ -319,7 +322,7 @@
     </article>
 
     <article class="menu-card reveal" data-category="bebidas" data-id="suco-natural" data-name="Suco Natural" data-price="8.90">
-      <div class="menu-card-thumb"><div class="img-placeholder img-placeholder--sm"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="8.5" cy="9.5" r="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M21 16l-5.5-5.5L11 15l-2.5-2.5L3 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Imagem em breve</span></div></div>
+      <div class="menu-card-thumb"><div class="img-placeholder img-placeholder--round"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="8.5" cy="9.5" r="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M21 16l-5.5-5.5L11 15l-2.5-2.5L3 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Imagem em breve</span></div></div>
       <div class="menu-card-body">
         <h4>Suco Natural</h4>
         <p>Feito na hora, sabor da fruta de verdade.</p>
@@ -330,6 +333,7 @@
       </div>
     </article>
 
+  </div>
   </div>
 
   <p class="menu-note reveal">* Cardápio ilustrativo — nomes, fotos e valores serão atualizados com os itens e preços reais da casa antes da publicação definitiva.</p>

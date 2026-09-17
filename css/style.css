@@ -96,10 +96,14 @@ a:focus-visible, button:focus-visible {
   text-transform: uppercase;
   letter-spacing: .5px;
 }
-/* versão compacta (miniaturas de 72px do cardápio) — só o ícone, sem
-   texto (não cabe legível nesse tamanho). */
+/* versão compacta — só o ícone, sem texto (miniaturas muito pequenas
+   onde o texto não cabe legível). */
 .img-placeholder--sm svg { width: 26px; height: 26px; }
 .img-placeholder--sm span { display: none; }
+/* versão redonda (fotos-círculo do cardápio, ~112px) — ícone menor que
+   o padrão pra sobrar espaço pro texto "Imagem em breve" dentro do círculo. */
+.img-placeholder--round svg { width: 28px; height: 28px; }
+.img-placeholder--round span { font-size: 9.5px; text-align: center; line-height: 1.2; max-width: 74px; }
 
 .btn {
   display: inline-flex;
@@ -535,13 +539,44 @@ a:focus-visible, button:focus-visible {
 }
 
 /* ===================================================
-   CARDÁPIO — categorias em pílulas + grade. Superfície --black (volta
-   ao tom mais escuro), degrau de hierarquia em relação às Destaques.
+   CARDÁPIO — grade de cartões redondos + lista de filtro vertical,
+   título serifado itálico centralizado. Direção visual reproduz a
+   referência enviada pelo cliente (grade de destaques em mockup de
+   padaria), com a cor terracota do original mapeada pros tokens já
+   existentes da marca (--gold/--orange), sem introduzir cor nova, e
+   uma única fonte nova (Playfair Display) só no título desta seção.
 =================================================== */
-.menu-section { background: var(--black); padding: 90px 0 90px; }
+.menu-section {
+  background:
+    radial-gradient(ellipse 70% 50% at 12% 0%, rgba(203,161,53,.06), transparent 62%),
+    radial-gradient(ellipse 60% 45% at 100% 100%, rgba(240,90,36,.05), transparent 60%),
+    var(--black);
+  padding: 96px 0 90px;
+}
 .menu-section .section-title { color: var(--cream); }
 .menu-section .section-eyebrow { color: var(--yellow); }
 .menu-section .section-head-note { color: rgba(245,240,229,.55); max-width: none; margin-top: 6px; }
+
+/* Cabeçalho centralizado + título serifado — só no cardápio geral;
+   combos.html mantém o link "Voltar" alinhado à esquerda de sempre. */
+#cardapio .section-head {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0;
+  margin-bottom: 54px;
+}
+#cardapio .section-head > div { display: flex; flex-direction: column; align-items: center; }
+#cardapio .section-title {
+  font-family: 'Playfair Display', var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: .3px;
+  font-size: clamp(34px, 5vw, 54px);
+  color: var(--gold);
+}
+
 /* Link "Voltar" — página dedicada de combos (combos.html) */
 .menu-back-link {
   display: inline-block;
@@ -552,52 +587,105 @@ a:focus-visible, button:focus-visible {
 }
 .menu-back-link:hover { color: var(--yellow); }
 
-.menu-tabs {
+/* Corpo: lista de filtro vertical à esquerda + grade à direita
+   (combos.html não usa .menu-body/.menu-tabs — só a grade sozinha). */
+.menu-body {
   max-width: 1240px;
-  margin: 0 auto 42px;
+  margin: 0 auto;
   padding: 0 24px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+  align-items: flex-start;
+  gap: 40px;
+}
+.menu-tabs {
+  flex-shrink: 0;
+  width: 168px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 6px;
+}
+.menu-tabs-label {
+  display: block;
+  width: 100%;
+  color: rgba(245,240,229,.4);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
 }
 .menu-tab {
   background: transparent;
-  border: 2px solid rgba(245,240,229,.3);
-  color: var(--cream);
+  border: none;
+  color: rgba(245,240,229,.55);
   font-weight: 600;
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: .5px;
-  padding: 10px 20px;
-  border-radius: 30px;
-  transition: background .15s ease, border-color .15s ease, color .15s ease;
+  font-size: 14px;
+  text-align: left;
+  padding: 4px 0 4px 20px;
+  position: relative;
+  transition: color .15s ease;
 }
-.menu-tab:hover { border-color: var(--yellow); }
-.menu-tab.is-active { background: var(--yellow); color: var(--black); border-color: var(--yellow); }
+.menu-tab::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1.5px solid rgba(245,240,229,.3);
+  transition: background .15s ease, border-color .15s ease;
+}
+.menu-tab:hover { color: var(--cream); }
+.menu-tab.is-active { color: var(--yellow); }
+.menu-tab.is-active::before { background: var(--yellow); border-color: var(--yellow); }
 
 .menu-grid {
   max-width: 1240px;
   margin: 0 auto;
   padding: 0 24px;
+  flex: 1;
+  min-width: 0;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 26px 22px;
 }
+.menu-body .menu-grid { max-width: none; margin: 0; padding: 0; }
 .menu-card {
   background: var(--black-soft);
-  border: 1px solid rgba(245,240,229,.12);
-  border-radius: 10px;
-  padding: 18px;
+  border: 1px solid rgba(245,240,229,.1);
+  border-radius: 14px;
+  padding: 22px 16px 18px;
   display: flex;
-  gap: 16px;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+  position: relative;
   transition: border-color .15s ease, transform .15s ease;
 }
 .menu-card:hover { border-color: var(--yellow); transform: translateY(-3px); }
+.menu-card-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: var(--orange);
+  color: var(--cream);
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .4px;
+  padding: 4px 9px;
+  border-radius: 20px;
+  border: 1px solid rgba(245,240,229,.15);
+}
 .menu-card-thumb {
-  width: 72px;
-  height: 72px;
-  border-radius: 12px;
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
   background: var(--surface-2);
   border: 1px solid rgba(245,240,229,.1);
   flex-shrink: 0;
@@ -605,23 +693,24 @@ a:focus-visible, button:focus-visible {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  margin-bottom: 10px;
 }
-.menu-card-body { flex: 1; min-width: 0; }
+.menu-card-body { display: flex; flex-direction: column; align-items: center; width: 100%; }
 .menu-card-body h4 {
   font-family: var(--font-body);
   font-weight: 700;
   color: var(--cream);
-  font-size: 15px;
-  margin: 0 0 4px;
+  font-size: 14.5px;
+  margin: 0 0 8px;
   text-transform: uppercase;
   letter-spacing: .2px;
 }
-.menu-card-body p { margin: 0 0 10px; color: rgba(245,240,229,.6); font-size: 13px; line-height: 1.45; }
-.menu-card-footer { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.menu-card-body p { display: none; }
+.menu-card-footer { display: flex; flex-direction: column; align-items: center; gap: 10px; }
 .menu-card-price { color: var(--yellow); font-weight: 800; font-size: 15px; }
 .menu-add-btn {
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   background: var(--yellow);
   color: var(--black);
@@ -629,7 +718,7 @@ a:focus-visible, button:focus-visible {
   align-items: center;
   justify-content: center;
   font-weight: 800;
-  font-size: 16px;
+  font-size: 17px;
   border: none;
   flex-shrink: 0;
 }
@@ -637,16 +726,21 @@ a:focus-visible, button:focus-visible {
 
 .menu-note {
   max-width: 1240px;
-  margin: 34px auto 0;
+  margin: 44px auto 0;
   padding: 0 24px;
   color: rgba(245,240,229,.5);
   font-size: 12.5px;
 }
 
+@media (max-width: 1080px) {
+  .menu-grid { grid-template-columns: repeat(3, 1fr); }
+}
 @media (max-width: 900px) {
+  .menu-body { flex-direction: column; gap: 28px; }
+  .menu-tabs { flex-direction: row; flex-wrap: wrap; width: auto; gap: 10px 22px; }
   .menu-grid { grid-template-columns: repeat(2, 1fr); }
 }
-@media (max-width: 620px) {
+@media (max-width: 400px) {
   .menu-grid { grid-template-columns: 1fr; }
 }
 
