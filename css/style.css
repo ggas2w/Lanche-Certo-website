@@ -359,18 +359,19 @@ a:focus-visible, button:focus-visible {
 .hero-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
 
 @media (max-width: 760px) {
-  .hero { padding: 104px 24px 56px; }
-  .hero-inner { min-height: 72vh; }
-  /* Em telas de celular o herói fica bem mais alto/estreito que o
-     vídeo (16:9) — com object-fit:cover isso cortava a maior parte da
-     largura do vídeo, sobrando só uma fatia vertical dele. "contain"
-     mostra a composição inteira; a "sobra" em cima/embaixo mostra o
-     próprio fundo escuro do herói por trás (mesma família de cor do
-     véu), então não fica com espaço vazio destoando. */
-  .hero-bg-video { object-fit: contain; opacity: .7; }
+  /* Herói bem mais compacto no celular — o valor anterior (72vh +
+     padding grande) deixava muito espaço morto acima/abaixo do
+     conteúdo. "contain" no vídeo (tentativa anterior) resolvia o corte
+     mas criava tarjas pretas nítidas acima/abaixo do próprio vídeo —
+     voltou pra "cover" (vídeo sempre preenche o herói inteiro, sem
+     tarja) combinado com um herói mais baixo, que já reduz bastante o
+     corte por conta própria (container menos desproporcional em
+     relação ao vídeo 16:9). */
+  .hero { padding: 96px 20px 36px; }
+  .hero-inner { min-height: 56vh; }
 }
 @media (max-width: 480px) {
-  .hero-inner { min-height: 66vh; }
+  .hero-inner { min-height: 52vh; }
   .hero-buttons { flex-direction: column; align-items: stretch; width: 100%; }
   .hero-buttons .btn { width: 100%; }
 }
