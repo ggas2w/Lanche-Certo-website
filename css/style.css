@@ -42,6 +42,12 @@ button { font-family: inherit; cursor: pointer; }
 ul { list-style: none; margin: 0; padding: 0; }
 img { max-width: 100%; display: block; }
 section { position: relative; }
+/* estado de foco visível por padrão pra quem navega por teclado — cobre
+   os links/botões que não têm um estilo de foco próprio já definido. */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
+}
 
 /* ===================================================
    Utilitários de marca

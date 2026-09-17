@@ -207,6 +207,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (Object.keys(cart).length === 0) return;
     if (!window.confirm('Limpar o carrinho? Isso remove todos os itens e observações.')) return;
     cart = {};
+    generalNote = '';
+    if (cartGeneralNoteEl) cartGeneralNoteEl.value = '';
     renderCart();
   }
 
