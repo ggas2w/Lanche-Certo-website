@@ -11,6 +11,14 @@
 // ===================================================
 document.addEventListener('DOMContentLoaded', () => {
 
+  // Vídeo de fundo do hero — pausa em prefers-reduced-motion (fica só
+  // no poster/primeiro frame, sem perder a atmosfera visual).
+  const bgVideo = document.querySelector('.hero-bg-video');
+  if (bgVideo && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    bgVideo.pause();
+    bgVideo.removeAttribute('autoplay');
+  }
+
   const heroPhotoA = document.getElementById('heroPhotoA');
   const heroPhotoB = document.getElementById('heroPhotoB');
   const emojiBig = document.getElementById('emojiBig');

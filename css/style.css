@@ -227,17 +227,47 @@ section { position: relative; }
    forçada: contraste forte, camadas, leve assimetria controlada.
 =================================================== */
 .hero {
+  position: relative;
   background: var(--black);
-  background-image:
-    radial-gradient(circle, rgba(255,217,43,.14) 1.6px, transparent 1.6px);
-  background-size: 22px 22px;
   overflow: hidden;
   padding: 80px 24px 90px;
 }
+/* Vídeo de fundo — chapa quente/hambúrguer sendo preparado, sutil,
+   sempre atrás do conteúdo. Poster cobre o instante antes do 1º frame
+   decodificar e qualquer bloqueio de autoplay (fallback estático). */
+.hero-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* mais forte à direita/embaixo (onde não tem texto), a vitrine de
+     comida por cima já cobre boa parte dessa área. */
+  object-position: 70% 55%;
+  z-index: 0;
+}
+/* véu quente (carvão/marrom, não preto puro) — conecta o vídeo com a
+   identidade da marca em vez de um contraste duro. */
+.hero-bg-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgba(17,17,17,.86) 0%, rgba(17,17,17,.55) 32%, rgba(17,17,17,.18) 58%, rgba(17,17,17,.08) 100%),
+    rgba(43,33,27,.26);
+}
+.hero-bg-dots {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background-image: radial-gradient(circle, rgba(255,217,43,.14) 1.6px, transparent 1.6px);
+  background-size: 22px 22px;
+}
 .hero-inner {
+  position: relative;
+  z-index: 3;
   max-width: 1240px;
   margin: 0 auto;
-  position: relative;
   display: grid;
   grid-template-columns: 1.15fr .85fr;
   align-items: center;
