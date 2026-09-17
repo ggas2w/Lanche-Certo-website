@@ -14,25 +14,6 @@
 </head>
 <body>
 
-<!-- Sprite de ilustrações — só o símbolo usado nesta página (combo),
-     mesmo estilo/arquivo do index.html. -->
-<svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
-  <defs>
-    <symbol id="illus-combo" viewBox="0 0 100 100">
-      <path d="M62 26 L86 26 L82 62 L66 62 Z" fill="#F5F0E5" stroke="#111111" stroke-width="2"/>
-      <rect x="60" y="20" width="28" height="7" rx="2" fill="#111111"/>
-      <path d="M8 50 L34 50 L29 82 L13 82 Z" fill="#F05A24"/>
-      <rect x="14" y="30" width="5" height="26" rx="2" fill="#FFD92B"/>
-      <rect x="21" y="26" width="5" height="30" rx="2" fill="#E8BF00"/>
-      <rect x="27" y="32" width="5" height="24" rx="2" fill="#FFD92B"/>
-      <ellipse cx="46" cy="78" rx="22" ry="6" fill="#B88B18"/>
-      <rect x="30" y="68" width="32" height="9" rx="4" fill="#3A3028"/>
-      <path d="M28 63 Q46 70 64 63 L64 67 Q46 74 28 67 Z" fill="#8AA33C"/>
-      <path d="M26 44 C26 30 35 22 46 22 C57 22 66 30 66 44 Z" fill="#E8BF00"/>
-    </symbol>
-  </defs>
-</svg>
-
 <!-- ===== HEADER =====
      Mesmo header do index.html (logo/nav/carrinho). Sem herói nesta
      página, então já entra no estado "sólido" (classe is-scrolled
@@ -120,7 +101,7 @@
   <div class="menu-grid">
 
     <article class="menu-card reveal" data-category="combos" data-id="combo-duplo-full" data-name="Combo Duplo" data-price="54.90">
-      <div class="menu-card-thumb"><svg class="illus" viewBox="0 0 100 100" aria-hidden="true"><use href="#illus-combo"></use></svg></div>
+      <div class="menu-card-thumb"><div class="img-placeholder img-placeholder--sm"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="8.5" cy="9.5" r="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M21 16l-5.5-5.5L11 15l-2.5-2.5L3 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Imagem em breve</span></div></div>
       <div class="menu-card-body">
         <h4>Combo Duplo</h4>
         <p>2 lanches à escolha, 2 batatas fritas e 2 refrigerantes.</p>
