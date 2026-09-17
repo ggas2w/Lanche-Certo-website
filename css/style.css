@@ -283,7 +283,6 @@ section { position: relative; }
   margin-top: 26px;
   color: var(--cream);
 }
-.hero-arrow-note svg { width: 52px; height: 40px; flex-shrink: 0; color: var(--yellow); }
 .hero-arrow-note span {
   font-family: var(--font-accent);
   font-weight: 700;
@@ -323,23 +322,63 @@ section { position: relative; }
   inset: 0;
   overflow: hidden;
 }
-.hero-slide-slot {
+/* Troca de foto — a mesma animação (duas camadas de imagem cruzando +
+   par de emojis saindo de trás da foto) do carrossel original do
+   Chapa Quente/Gulamix, com fotos/emojis reais reaproveitados como
+   estão. Só o percurso de entrada/saída passa a ser relativo à própria
+   vitrine (não 100vw da tela) — ver comentário no HTML. */
+.hero-track-viewport {
   position: absolute;
   inset: 0;
+  overflow: hidden;
+}
+.hero-photo-layer {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  max-width: 58%;
+  max-height: 58%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  will-change: transform;
+  z-index: 2;
+  filter: drop-shadow(0 16px 20px rgba(0,0,0,.4));
+}
+.hero-photo-layer.xis-carne-photo { max-width: 66%; max-height: 66%; }
+.hero-emojis {
+  position: absolute;
+  bottom: 16%;
+  right: 9%;
+  width: 78px;
+  height: 78px;
+  z-index: 1;
+}
+.emoji-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--black-soft);
+  box-shadow: 0 0 0 4px rgba(255,217,43,.25), 0 10px 18px rgba(0,0,0,.4);
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 14px;
-  padding: 30px;
-  transform: translateX(0);
+  overflow: hidden;
+  opacity: 1;
+  will-change: transform, opacity;
 }
-.hero-slide-illus {
-  width: min(220px, 62%);
-  height: auto;
-  filter: drop-shadow(0 16px 22px rgba(0,0,0,.4));
+.emoji-circle img { width: 62%; height: 62%; object-fit: contain; display: block; }
+.emoji-circle-big { width: 54px; height: 54px; left: 2px; bottom: 0; }
+.emoji-circle-small { width: 32px; height: 32px; top: 0; right: 0; }
+
+.hero-slide-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 16px;
+  z-index: 3;
+  text-align: center;
+  pointer-events: none;
 }
-.hero-slide-caption { text-align: center; }
 .hero-slide-caption strong {
   display: block;
   font-family: var(--font-display);
@@ -744,16 +783,6 @@ section { position: relative; }
   line-height: 1.5;
   font-weight: 500;
 }
-.promo-arrow {
-  position: absolute;
-  width: 90px;
-  height: 70px;
-  color: var(--black);
-  opacity: .5;
-}
-.promo-arrow--left { left: 4%; top: 10%; transform: rotate(18deg) scaleX(-1); }
-.promo-arrow--right { right: 4%; bottom: 8%; transform: rotate(-14deg); }
-@media (max-width: 700px) { .promo-arrow { display: none; } }
 
 /* ===================================================
    SOBRE
