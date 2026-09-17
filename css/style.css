@@ -299,15 +299,15 @@ a:focus-visible, button:focus-visible {
   object-fit: cover;
   object-position: 50% 45%;
   z-index: 0;
-  opacity: .5;
+  opacity: .64;
 }
 .hero-bg-overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
   background:
-    radial-gradient(ellipse 62% 68% at 50% 46%, rgba(9,7,5,.55), transparent 75%),
-    rgba(15,11,8,.74);
+    radial-gradient(ellipse 62% 68% at 50% 46%, rgba(9,7,5,.46), transparent 75%),
+    rgba(15,11,8,.58);
 }
 .hero-inner {
   position: relative;
@@ -361,6 +361,13 @@ a:focus-visible, button:focus-visible {
 @media (max-width: 760px) {
   .hero { padding: 104px 24px 56px; }
   .hero-inner { min-height: 72vh; }
+  /* Em telas de celular o herói fica bem mais alto/estreito que o
+     vídeo (16:9) — com object-fit:cover isso cortava a maior parte da
+     largura do vídeo, sobrando só uma fatia vertical dele. "contain"
+     mostra a composição inteira; a "sobra" em cima/embaixo mostra o
+     próprio fundo escuro do herói por trás (mesma família de cor do
+     véu), então não fica com espaço vazio destoando. */
+  .hero-bg-video { object-fit: contain; opacity: .7; }
 }
 @media (max-width: 480px) {
   .hero-inner { min-height: 66vh; }
