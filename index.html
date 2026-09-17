@@ -145,13 +145,14 @@
 
 <!-- ===== HERO =====
      CLIENT CONFIG — headline, subtítulo, CTAs. Vídeo de fundo (chapa
-     quente + hambúrguer sendo preparado) como camada sutil de atmosfera,
-     com véu quente (não preto puro) + gradiente mais escuro do lado
-     esquerdo pra manter o texto legível. Fica sempre atrás do conteúdo. -->
+     quente + hambúrguer sendo preparado, loop bumerangue — vai e volta
+     — pra não ter corte abrupto) como única camada visual do hero, com
+     véu quente (não preto puro) atrás do texto centralizado. Sem card
+     de produto estático, sem pontinhos decorativos: o vídeo é que dá o
+     movimento. Hero ocupa a maior parte da viewport inicial. -->
 <section class="hero" id="inicio">
   <video class="hero-bg-video" src="public/hero-chapa-bg.mp4" poster="public/hero-chapa-bg-poster.jpg" autoplay muted loop playsinline></video>
   <div class="hero-bg-overlay" aria-hidden="true"></div>
-  <div class="hero-bg-dots" aria-hidden="true"></div>
 
   <div class="hero-inner">
     <div class="hero-content">
@@ -165,42 +166,6 @@
         <a href="#cardapio" class="btn btn-primary">Ver Cardápio</a>
         <a href="#contato" class="btn btn-secondary">Pedir Agora</a>
       </div>
-    </div>
-
-    <!-- Vitrine giratória do hero — a MESMA animação de troca de foto
-         (duas camadas de imagem + par de emojis saindo de trás dela)
-         originalmente criada e ajustada a dedo pro carrossel do projeto
-         Chapa Quente/Gulamix, com as fotos e emojis reais reaproveitados
-         tal como estão (ver js/hero.js): mesmas curvas de easing, mesma
-         duração, mesmo comportamento de pop dos emojis. Só o percurso de
-         entrada/saída foi ajustado pra caber na vitrine da Lanche Certo
-         em vez de 100vw da tela inteira, pra nunca cobrir o headline nem
-         gerar overflow horizontal. Agora roda em loop automático e as
-         setas de navegação seguem funcionais. -->
-    <div class="hero-visual">
-      <div class="hero-showcase" id="heroShowcase">
-        <button class="hero-showcase-arrow hero-showcase-arrow-left" aria-label="Item anterior">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <div class="hero-showcase-viewport">
-          <div class="hero-track-viewport">
-            <img class="hero-photo-layer" id="heroPhotoA" src="public/hamburguer-hero-solto.png" alt="X-Tudo Lanche Certo">
-            <img class="hero-photo-layer" id="heroPhotoB" alt="">
-          </div>
-          <div class="hero-emojis">
-            <span class="emoji-circle emoji-circle-big">
-              <img id="emojiBig" src="public/emoji-foguinho.png" alt="">
-            </span>
-            <span class="emoji-circle emoji-circle-small">
-              <img id="emojiSmall" src="public/emoji-batata-frita.png" alt="">
-            </span>
-          </div>
-        </div>
-        <button class="hero-showcase-arrow hero-showcase-arrow-right" aria-label="Próximo item">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-      </div>
-      <span class="hero-showcase-tag">Direto do cardápio</span>
     </div>
   </div>
 </section>
@@ -289,7 +254,6 @@
     <button class="menu-tab" data-category="lanches">Lanches</button>
     <button class="menu-tab" data-category="xis">Xis</button>
     <button class="menu-tab" data-category="porcoes">Porções</button>
-    <button class="menu-tab" data-category="combos">Combos</button>
     <button class="menu-tab" data-category="bebidas">Bebidas</button>
   </div>
 
@@ -452,7 +416,7 @@
     <span class="promo-badge">Combo</span>
     <h2 class="promo-title">COMBO QUE RESOLVE.</h2>
     <p class="promo-text">Pra quem tá com fome de verdade: lanche, porção e bebida no ponto certo pra matar a fome sem pensar duas vezes.</p>
-    <a href="#cardapio" class="btn btn-dark">Ver Combos</a>
+    <a href="#cardapio" class="btn btn-dark" id="verCombosLink">Ver Combos</a>
   </div>
 </section>
 

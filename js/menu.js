@@ -22,18 +22,31 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- filtro de categorias do cardápio ---
+  // Função reaproveitada tanto pelas abas visíveis (Todos/Lanches/Xis/
+  // Porções/Bebidas — sem aba "Combos" separada, ver item 2 abaixo)
+  // quanto pelo botão "Ver Combos" da seção de promoção, que ativa esse
+  // mesmo filtro por código em vez de duplicar a listagem de combos.
   const tabs = document.querySelectorAll('.menu-tab');
   const cards = document.querySelectorAll('#menuGrid .menu-card');
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('is-active'));
-      tab.classList.add('is-active');
-      const category = tab.dataset.category;
-      cards.forEach(card => {
-        const show = category === 'todos' || card.dataset.category === category;
-        card.style.display = show ? '' : 'none';
-      });
+  function applyMenuFilter(category) {
+    tabs.forEach(t => t.classList.toggle('is-active', t.dataset.category === category));
+    cards.forEach(card => {
+      const show = category === 'todos' || card.dataset.category === category;
+      card.style.display = show ? '' : 'none';
     });
+  }
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => applyMenuFilter(tab.dataset.category));
+  });
+
+  // --- "Ver Combos" (seção de promoção) — sem aba "Combos" visível no
+  // cardápio, esse botão é o único caminho até a lista de combos: aplica
+  // o filtro (reaproveitando o mesmo mecanismo das abas) e rola até lá. -->
+  const verCombosLink = document.getElementById('verCombosLink');
+  verCombosLink?.addEventListener('click', (e) => {
+    e.preventDefault();
+    applyMenuFilter('combos');
+    document.getElementById('cardapio')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 
   // --- links de WhatsApp/Instagram ainda sem destino real ---
