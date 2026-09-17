@@ -17,34 +17,28 @@ document.addEventListener('DOMContentLoaded', () => {
   const emojiSmall = document.getElementById('emojiSmall');
   const circleBig = document.querySelector('.emoji-circle-big');
   const circleSmall = document.querySelector('.emoji-circle-small');
-  const captionEl = document.getElementById('heroSlideCaption');
-  const dotsEl = document.getElementById('heroShowcaseDots');
   const arrowLeft = document.querySelector('.hero-showcase-arrow-left');
   const arrowRight = document.querySelector('.hero-showcase-arrow-right');
   if (!heroPhotoA || !heroPhotoB) return;
 
+  // Sem nome/legenda por cima da foto — o hambúrguer é o foco visual,
+  // sem texto de produto dentro do card (pedido explícito do cliente).
   const SLIDES = [
     {
       photo: 'public/hamburguer-hero-solto.png',
       alt: 'Hambúrguer Lanche Certo',
-      name: 'X-Tudo',
-      tag: 'Duplo hambúrguer',
       emojiBig: 'public/emoji-foguinho.png',
       emojiSmall: 'public/emoji-batata-frita.png'
     },
     {
       photo: 'public/cachorro-quente-solto.png',
       alt: 'Cachorro-quente Lanche Certo',
-      name: 'Cachorro-quente',
-      tag: 'Completo',
       emojiBig: 'public/emoji-saboreando-comida.png',
       emojiSmall: 'public/emoji-coracao.png'
     },
     {
       photo: 'public/xis-carne-solto.png',
       alt: 'Xis Carne Lanche Certo',
-      name: 'Xis Carne',
-      tag: 'Na chapa',
       emojiBig: 'public/emoji-carinha-de-amor.png',
       emojiSmall: 'public/emoji-gesto-italiano.png'
     }
@@ -68,17 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   })();
-
-  function setCaption(slide) {
-    if (!captionEl) return;
-    captionEl.innerHTML = `<strong>${slide.name}</strong><small>${slide.tag}</small>`;
-  }
-
-  function renderDots(activeIndex) {
-    if (!dotsEl) return;
-    dotsEl.innerHTML = SLIDES.map((_, i) => `<span class="${i === activeIndex ? 'is-active' : ''}"></span>`).join('');
-  }
-  renderDots(0);
 
   function hideEmojiCircles() {
     [circleBig, circleSmall].forEach(el => {
@@ -110,14 +93,11 @@ document.addEventListener('DOMContentLoaded', () => {
     emojiSmall.src = slide.emojiSmall;
     popEmojiCircle(circleBig, { x: -70, y: -60 }, 0);
     popEmojiCircle(circleSmall, { x: -80, y: -40 }, 80);
-    setCaption(slide);
-    renderDots(index);
   }
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (prefersReducedMotion) {
     // Fallback estático: mostra só o primeiro item parado, sem loop nem setas.
-    setCaption(SLIDES[0]);
     emojiBig.src = SLIDES[0].emojiBig;
     emojiSmall.src = SLIDES[0].emojiSmall;
     arrowLeft && (arrowLeft.hidden = true);
