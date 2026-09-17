@@ -26,6 +26,11 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 html { overflow-x: hidden; }
+/* header agora é fixed (flutua por cima do conteúdo o tempo todo, não
+   só depois de "grudar") — sem isso, o destino de qualquer link/scroll
+   por âncora (nav, "Ver Combos") ficaria parcialmente escondido atrás
+   dele. */
+#inicio, #destaques, #cardapio, #sobre, #contato { scroll-margin-top: 90px; }
 body {
   margin: 0;
   font-family: var(--font-body);
@@ -113,12 +118,24 @@ section { position: relative; }
 /* ===================================================
    HEADER — logo real pequena e controlada, nunca protagonista
 =================================================== */
+/* Header com dois estados: transparente/mesclado ao herói no topo,
+   sólido (preto + linha amarela) assim que o herói sai da tela — ver
+   .header.is-scrolled e a lógica de scroll em js/hero.js. Fixed (não
+   sticky) pra flutuar sobre o vídeo do herói desde o primeiro frame. */
 .header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
+  background: transparent;
+  border-bottom: 3px solid transparent;
+  transition: background-color .35s ease, border-color .35s ease, box-shadow .35s ease;
+}
+.header.is-scrolled {
   background: var(--black);
-  border-bottom: 3px solid var(--yellow);
+  border-bottom-color: var(--yellow);
+  box-shadow: 0 4px 18px rgba(0,0,0,.35);
 }
 .header-inner {
   max-width: 1240px;
@@ -268,7 +285,7 @@ section { position: relative; }
   justify-content: center;
 }
 .hero-content {
-  max-width: 640px;
+  max-width: 960px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -287,10 +304,10 @@ section { position: relative; }
 .hero-title {
   font-family: var(--font-display);
   text-transform: uppercase;
-  line-height: .96;
+  line-height: .94;
   letter-spacing: .5px;
-  font-size: clamp(44px, 7vw, 84px);
-  margin: 0 0 26px;
+  font-size: clamp(54px, 9.5vw, 138px);
+  margin: 0 0 28px;
 }
 .hero-title .line-cream { color: var(--cream); display: block; }
 .hero-title .line-yellow { color: var(--yellow); display: block; }

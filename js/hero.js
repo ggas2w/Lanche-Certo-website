@@ -1,13 +1,27 @@
 // ===================================================
-// Vídeo de fundo do hero — pausa em prefers-reduced-motion (fica só no
-// poster/primeiro frame, sem perder a atmosfera visual da seção).
+// Header com dois estados — transparente/mesclado ao herói no topo,
+// sólido (preto + linha amarela) assim que o herói sai da tela. O
+// vídeo de fundo do herói toca sozinho via autoplay/muted/loop no
+// próprio <video> (sem pausa condicional por JS aqui: um vídeo de
+// fundo mudo e sutil como esse não é o tipo de movimento que
+// prefers-reduced-motion pretende bloquear, e pausá-lo condicionalmente
+// estava fazendo o herói parecer estático pra quem tem essa preferência
+// ligada no sistema).
 // ===================================================
 document.addEventListener('DOMContentLoaded', () => {
 
-  const bgVideo = document.querySelector('.hero-bg-video');
-  if (bgVideo && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    bgVideo.pause();
-    bgVideo.removeAttribute('autoplay');
+  const header = document.querySelector('.header');
+  const hero = document.getElementById('inicio');
+  if (!header || !hero) return;
+
+  function updateHeaderState() {
+    const heroBottom = hero.offsetTop + hero.offsetHeight;
+    const threshold = heroBottom - header.offsetHeight - 40;
+    header.classList.toggle('is-scrolled', window.scrollY > threshold);
   }
+
+  window.addEventListener('scroll', updateHeaderState, { passive: true });
+  window.addEventListener('resize', updateHeaderState);
+  updateHeaderState();
 
 });
